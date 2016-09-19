@@ -3,23 +3,41 @@
 Ctrain Ctimetable::SearchNextTrain(vector <Ctrain> diagram, int hh, int mm)
 {
 	int minute_comp = hh * 60 + mm;		//•ªŠ·Z‚µ‚Ä”äŠr
+	if (hh < 2) {
+		minute_comp += (hh + 24) * 60;	//0ˆÈ~‘Î‰
+	}
+
 	for (int i = 0; i < diagram.size(); i++) {
 		int minute = diagram[i].hour * 60 + diagram[i].minutes;
+		if (diagram[i].hour < 2) {
+			minute += ((diagram[i].hour) + 24) * 60;	//0ˆÈ~‘Î‰
+		}
 		if (minute > minute_comp) {
-			return diagram[i];	//0ˆÈ~‚ÌŒŸõ”ñ‘Î‰
+			return diagram[i];
 		}
 	}
+	//ŠY“–‚·‚é‚ª–³‚¢ê‡Å‰‚Ìin”­j‚ğ•Ô‚·B
+	return diagram[0];
 }
 
 Ctrain Ctimetable::SearchNextTrain(vector <Ctrain> diagram, Ctrain train_before)
 {
 	int minute_comp = train_before.hour * 60 + train_before.minutes;		//•ªŠ·Z‚µ‚Ä”äŠr
+	if (train_before.hour < 2) {
+		minute_comp += ((train_before.hour) + 24) * 60;	//0ˆÈ~‘Î‰
+	}
+	
 	for (int i = 0; i < diagram.size(); i++) {
 		int minute = diagram[i].hour * 60 + diagram[i].minutes;
+		if (diagram[i].hour < 2) {
+			minute += ((diagram[i].hour) + 24) * 60;	//0ˆÈ~‘Î‰
+		}
 		if (minute > minute_comp) {
-			return diagram[i];	//0ˆÈ~‚ÌŒŸõ”ñ‘Î‰
+			return diagram[i];	
 		}
 	}
+	//ŠY“–‚·‚é‚ª–³‚¢ê‡Å‰‚Ìin”­j‚ğ•Ô‚·B
+	return diagram[0];
 }
 
 Ctrain Ctimetable::GetNextTrain(int wday, int hour, int minute)

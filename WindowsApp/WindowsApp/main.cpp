@@ -110,7 +110,7 @@ vector <Ctimetable> StoreTimeTable()
 	Ctimetable EmptyTimetable;
 	Dir FnameList;
 	// ファイル入力（相対座標にしたほうがよいか）
-	vector<string> backfilelist = FnameList.read("C:\\Users\\h_wada\\Documents\\Visual Studio 2010\\Projects\\TimeTableSimulator_0806\\TimeTableSimulator\\data\\");
+	vector<string> backfilelist = FnameList.read("C:\\Users\\h_wada\\Documents\\Visual Studio 2010\\Projects\\TimeTableSimulator\\WindowsApp\\WindowsApp\\data\\");
 	for(int i = 0; i < backfilelist.size(); i++){
 		Timetable.push_back(EmptyTimetable);
 		Timetable[i].num = FnameList.GetStationNum(backfilelist[i]);
